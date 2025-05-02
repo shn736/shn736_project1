@@ -7,3 +7,9 @@ def mask_account_card(account_card: str) -> str:
 
 
 print(mask_account_card(account_card='Visa Platinum 7000792289606361'))
+
+def get_date(date: str) -> str:
+    """возвращает строку с датой в формате ДД.ММ.ГГГГ"""
+    return f" {date[8: 10]}.{date[5: 7]}.{date[0: 4]}"
+
+print(get_date(date='2024-03-11T02:26:18.671407'))
