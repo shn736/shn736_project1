@@ -23,7 +23,7 @@ operations = [
 
 
 def sort_by_date(operations: list[dict[str, any]], reverse: bool = True) -> list[dict]:
-    """Функция должна возвращает новый список, отсортированный по дате"""
+    """Функция возвращает новый список, отсортированный по дате"""
     return sorted(operations, key=lambda x: x.get("date"), reverse=reverse)
 
 
