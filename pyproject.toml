@@ -8,7 +8,7 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "package-name (>=0.1,<0.2)"
+    "package-name (>=0.1,<0.2)",
 ]
 
 
@@ -21,6 +21,10 @@ flake8 = "^7.2.0"
 mypy = "^1.15.0"
 black = "^25.1.0"
 isort = "^6.0.1"
+
+
+[tool.poetry.group.dev.dependencies]
+requests = "^2.32.3"
 
 [tool.black]
 line-length = 119
