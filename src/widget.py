@@ -3,10 +3,17 @@ from src.masks import get_mask_card_number, get_mask_account
 
 def mask_account_card(account_card: str) -> str:
     """функция которая обрабатывауе информацию как о картах, так и о счетах"""
+    len_account = ''.join(number for number in account_card if number.isdigit())
     if "Счет" in account_card:
-        return f"{account_card[:5]}{get_mask_account(account_card[-20:])}"
+        if len(len_account) != 20:
+            return "Вы ввели не верный номер счета"
+        else:
+            return f"{account_card[:5]}{get_mask_account(account_card[-20:])}"
     else:
-        return f"{account_card[:-16]}{get_mask_card_number(account_card[-16:])}"
+        if len(len_account) != 16:
+            return "Вы ввели не верный номер счета"
+        else:
+            return f"{account_card[:-16]}{get_mask_card_number(account_card[-16:])}"
 
 
 mask_account_card(account_card='Счет 73654108430135874305')

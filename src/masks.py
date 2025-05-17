@@ -13,7 +13,7 @@ get_mask_card_number(card_number='7000792289606361')
 def get_mask_account(account: str) -> str:
     """принимает на вход номер счета и возвращает его маску"""
     if len(account) != 20:
-        print("Вы ввели не верный номер счета")
+        return "Вы ввели не верный номер счета"
 
     else:
         return f"**{account[-4:]}"
