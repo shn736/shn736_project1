@@ -21,7 +21,14 @@ mask_account_card(account_card='Счет 73654108430135874305')
 
 def get_date(date: str) -> str:
     """возвращает строку с датой в формате ДД.ММ.ГГГГ"""
-    return f"{date[8: 10]}.{date[5: 7]}.{date[0: 4]}"
+    if date is None:
+        return "Некорректный ввод"
+    else:
+        is_digit_present = any(character.isdigit() for character in date)
+        if is_digit_present != True or date is None:
+            return "Некорректный ввод"
+        else:
+            return f"{date[8: 10]}.{date[5: 7]}.{date[0: 4]}"
 
 
 get_date(date='2024-03-11T02:26:18.671407')

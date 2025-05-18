@@ -4,7 +4,7 @@ def get_mask_card_number(card_number: str) -> str:
         return "Вы ввели не верный номер карты"
 
     else:
-        return f"{card_number[0: 4]} {card_number[4: 6]}** ****  {card_number[-4:]}"
+        return f"{card_number[0: 4]} {card_number[4: 6]}** **** {card_number[-4:]}"
 
 
 get_mask_card_number(card_number='7000792289606361')
