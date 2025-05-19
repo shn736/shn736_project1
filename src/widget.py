@@ -21,11 +21,16 @@ mask_account_card(account_card='Счет 73654108430135874305')
 
 def get_date(date: str) -> str:
     """возвращает строку с датой в формате ДД.ММ.ГГГГ"""
+    entered_day = date[8: 10]
+    entered_month  = date[5: 7]
+    entered_year = {date[0: 4]}
     if date is None:
         return "Некорректный ввод"
     else:
         is_digit_present = any(character.isdigit() for character in date)
-        if is_digit_present != True or date is None:
+        if is_digit_present != True:
+            return "Некорректный ввод"
+        elif int(entered_day) > 31:
             return "Некорректный ввод"
         else:
             return f"{date[8: 10]}.{date[5: 7]}.{date[0: 4]}"

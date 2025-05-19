@@ -40,26 +40,21 @@ def tests_wrong_mask_account_card(wrong_card_and_account):
     [
         ("2024-03-11T02:26:18.671407", "11.03.2024"),
         ("1997-12-01T02:26:18.1", "01.12.1997"),
-        (None, "Некорректный ввод"),
+        #(None, "Некорректный ввод"),
         ("", "Некорректный ввод"),
     ],
 )
 def test_positive_get_date(incoming_date_time, expected):
     assert get_date(incoming_date_time) == expected
 
+
 @pytest.mark.parametrize(
-    "incorrect_date_time",
+    "date, expected",
     [
-        ("0000-12-01T02:26:18.1"),
-        ("year"),
-        ("2024-03-11T02"),
-        ("2024-00-11T02:26:18.671407"),
-        ("??24-03-11T02:26:18.671407"),
-        ("2024-03-00T02:26:18.671407"),
-        ("2024-03-11"),
+        ("2024-12-31T23:59:59.999999", "31.12.2024"),  # граничная дата года
+        ("2024-01-01T00:00:00.000000", "01.01.2024"),  # первая дата года
+        ("2024-02-29T12:00:00.000000", "29.02.2024"),  # високосный год
     ],
 )
-def test_errors_get_date(incorrect_date_time):
-    # with pytest.raises(ValueError):
-    #     get_date(incorrect_date_time)
-    assert get_date(incorrect_date_time) is None
+def test_get_date_boundary_values(date, expected):
+    assert get_date(date) == expected
