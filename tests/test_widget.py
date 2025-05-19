@@ -12,9 +12,7 @@ from src.widget import mask_account_card, get_date
         ("MasterCard 7158300734726758", "MasterCard 7158 30** **** 6758"),
      ],
 )
-
-
-def test_positive_mask_account_card(value_card_and_account,expected_result):
+def test_positive_mask_account_card(value_card_and_account, expected_result):
     assert mask_account_card(value_card_and_account) == expected_result
 
 
@@ -40,7 +38,6 @@ def tests_wrong_mask_account_card(wrong_card_and_account):
     [
         ("2024-03-11T02:26:18.671407", "11.03.2024"),
         ("1997-12-01T02:26:18.1", "01.12.1997"),
-        #(None, "Некорректный ввод"),
         ("", "Некорректный ввод"),
     ],
 )
