@@ -4,7 +4,7 @@ def get_mask_card_number(card_number: str) -> str:
         return "Вы ввели не верный номер карты"
 
     else:
-        return f"{card_number[0: 4]} {card_number[4: 6]}** ****  {card_number[-4:]}"
+        return f"{card_number[0: 4]} {card_number[4: 6]}** **** {card_number[-4:]}"
 
 
 get_mask_card_number(card_number='7000792289606361')
@@ -13,7 +13,7 @@ get_mask_card_number(card_number='7000792289606361')
 def get_mask_account(account: str) -> str:
     """принимает на вход номер счета и возвращает его маску"""
     if len(account) != 20:
-        print("Вы ввели не верный номер счета")
+        raise ValueError("Вы ввели не верный номер счета")
 
     else:
         return f"**{account[-4:]}"
