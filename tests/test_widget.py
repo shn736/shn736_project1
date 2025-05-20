@@ -30,7 +30,8 @@ def wrong_card_and_account():
 
 
 def tests_wrong_mask_account_card(wrong_card_and_account):
-    assert mask_account_card(wrong_card_and_account) == "Вы ввели не верный номер счета"
+    with pytest.raises(ValueError):
+        mask_account_card(wrong_card_and_account)
 
 
 @pytest.mark.parametrize(
