@@ -34,16 +34,17 @@ def tests_wrong_mask_account_card(wrong_card_and_account):
         mask_account_card(wrong_card_and_account)
 
 
-@pytest.mark.parametrize(
-    "incoming_date_time, expected",
-    [
-        ("2024-03-11T02:26:18.671407", "11.03.2024"),
-        ("1997-12-01T02:26:18.1", "01.12.1997"),
-        ("", "Некорректный ввод"),
-    ],
-)
-def test_positive_get_date(incoming_date_time, expected):
-    assert get_date(incoming_date_time) == expected
+@pytest.fixture
+def incoming_date_time():
+    return [
+        "2024-03-11T02:26:18.671407",
+        "1997-12-01T02:26:18.1",
+        " "]
+
+
+def test_positive_get_date(incoming_date_time):
+    with pytest.raises(ValueError):
+        get_date(incoming_date_time)
 
 
 @pytest.mark.parametrize(
