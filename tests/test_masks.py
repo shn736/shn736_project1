@@ -9,11 +9,13 @@ def tests_get_mask_card_number() -> None:
 
 
 def tests_len_get_mask_card_number() -> None:
-    assert get_mask_card_number(card_number='700079228911606361') == "Вы ввели не верный номер карты"
+    with pytest.raises(ValueError):
+        get_mask_card_number(card_number='700079228911606361')
 
 
 def tests_get_mask_card_number_empty() -> None:
-    assert get_mask_card_number(card_number=' ') == "Вы ввели не верный номер карты"
+    with pytest.raises(ValueError):
+        get_mask_card_number(card_number=' ')
 
 
 def tests_get_mask_account() -> None:
