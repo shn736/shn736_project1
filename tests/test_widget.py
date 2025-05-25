@@ -29,7 +29,7 @@ def wrong_card_and_account():
     ]
 
 
-def tests_wrong_mask_account_card(wrong_card_and_account):
+def test_wrong_mask_account_card(wrong_card_and_account):
     with pytest.raises(ValueError):
         mask_account_card(wrong_card_and_account)
 
