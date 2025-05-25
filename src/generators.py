@@ -1,6 +1,4 @@
-from typing import Generator
-
-from typing import Iterator, List, Dict
+from typing import Generator, Iterator, List, Dict
 
 
 def filter_by_currency(list_of_dicts: List[Dict], currency: str = "USD") -> Iterator[Dict]:
@@ -11,7 +9,9 @@ def filter_by_currency(list_of_dicts: List[Dict], currency: str = "USD") -> Iter
     return filter(predicate, list_of_dicts)
 
 
-
+def transaction_descriptions(transaction_list):
+    for transaction in [t["description"] for t in transaction_list]:
+        yield transaction
 
 
 def card_number_generator(start: int, stop: int) -> Generator[str, None, None]:
