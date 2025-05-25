@@ -1,35 +1,10 @@
-from src.masks import get_mask_card_number, get_mask_account
-
-from src.widget import mask_account_card, get_date
-
-from src.processing import filter_by_state, sort_by_date
+import pytest
 
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 
-print(get_mask_card_number('7000792289606361'))
-
-print(get_mask_account('73654108430135874305'))
-
-print(mask_account_card('Счет 73654108430135874305'))
-
-print(get_date('2024-03-11T02:26:18.671407'))
-
-#print(filter_by_state(transactions=[
- #   {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
- #   {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'},
-  #  {'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'},
-  #  {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}
-#]))
-
-#print(sort_by_date(operations=[
-          #  {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
-          #  {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
-          #  {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
-          #  {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
-        #]))
-
-transactions = (
-    [
+@ pytest.fixture
+def transactions():
+    return [
         {
             "id": 939719570,
             "state": "EXECUTED",
@@ -106,15 +81,20 @@ transactions = (
             "to": "Счет 14211924144426031657"
         }
     ]
-)
 
-usd_transactions = filter_by_currency(transactions, "USD")
-for _ in range(2):
-    print(next(usd_transactions))
 
-descriptions = transaction_descriptions(transactions)
-for _ in range(5):
-    print(next(descriptions))
+def test_transaction_descriptions(transactions):
+    generator = transaction_descriptions(transactions)
+    assert next(generator) == 'Перевод организации'
+    assert next(generator) == 'Перевод со счета на счет'
+    assert next(generator) == 'Перевод со счета на счет'
+    assert next(generator) == 'Перевод с карты на карту'
+    assert next(generator) == 'Перевод организации'
 
-for card_number in card_number_generator(1, 5):
-    print(card_number)
+
+def test_card_number_generator(start = 1, stop = 5):
+    generator = card_number_generator(start = 1, stop = 5)
+    assert next(generator) == '0000 0000 0000 0001'
+    assert next(generator) == '0000 0000 0000 0002'
+    assert next(generator) == '0000 0000 0000 0003'
+    assert next(generator) == '0000 0000 0000 0004'
