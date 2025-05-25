@@ -4,11 +4,8 @@ from typing import Generator, Iterator, List, Dict
 def filter_by_currency(transactions: List[Dict], currency: str = "USD") -> Iterator[Dict]:
     """Функция для фильтрации транзакций по валюте"""
     for transaction in transactions:
-        if transactions is None:
-            raise ValueError("Некорректный ввод")
-        elif transaction["operationAmount"]["currency"]["code"] == currency:
+        if transaction["operationAmount"]["currency"]["code"] == currency:
             yield transaction
-
 
 
 def transaction_descriptions(transaction_list: List[Dict]) -> Generator[str, None, None]:
