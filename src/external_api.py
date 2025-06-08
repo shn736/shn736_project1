@@ -12,7 +12,7 @@ def sum_transactions(transaction):
     """Функция, которая принимает на вход транзакцию и возвращает
     сумму транзакций (amount) в рублях, тип данных — float"""
     if transaction == {}:
-        print("Произошла ошибка!")
+        raise ValueError("Неподдерживаемая валюта")
     else:
         to = "RUB"
         from_1 = "USD"
