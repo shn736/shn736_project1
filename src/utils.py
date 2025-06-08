@@ -11,6 +11,4 @@ def operations_list(path: str) -> Any:
     except json.JSONDecodeError:
         return []
     except FileNotFoundError:
-        return[]
-
-#
+        return []
