@@ -4,6 +4,8 @@ from src.widget import mask_account_card, get_date
 
 from src.processing import filter_by_state, sort_by_date
 
+from src.utils import operations_list
+
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 
 print(get_mask_card_number('7000792289606361'))
@@ -118,3 +120,5 @@ for _ in range(5):
 
 for card_number in card_number_generator(1, 5):
     print(card_number)
+
+operations_list(path='../data/operations.json')
