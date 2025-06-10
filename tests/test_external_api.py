@@ -15,8 +15,11 @@ transaction_usd = {
 @patch("requests.get")
 def test_sum_transactions_usd(mock_get):
     headers = {"apikey": API_KEY}
-    url = f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={transaction_usd['operationAmount']
-    ['currency']['code']}&amount={transaction_usd['operationAmount']['amount']}"
+    url = (
+            f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from="
+            f"{transaction_usd['operationAmount']['currency']['code']}&amount="
+            f"{transaction_usd['operationAmount']['amount']}"
+    )
     mock_get.return_value.json.return_value = {'result': 3197431.543914}
     result = sum_transactions(transaction_usd)
     assert result == 3197431.543914
@@ -30,8 +33,11 @@ transaction_eur = {'id': 716496732, 'state': 'EXECUTED', 'date': '2018-04-04T17:
 @patch("requests.get")
 def test_sum_transactions_eur(mock_get):
     headers = {"apikey": API_KEY}
-    url = (f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={transaction_eur['operationAmount']
-    ['currency']['code']}&amount={transaction_eur['operationAmount']['amount']}")
+    url = (
+        f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from="
+        f"{transaction_eur['operationAmount']['currency']['code']}&amount="
+        f"{transaction_eur['operationAmount']['amount']}"
+    )
     mock_get.return_value.json.return_value = {'result': 3646496.001858}
     result = sum_transactions(transaction_eur)
     assert result == 3646496.001858
