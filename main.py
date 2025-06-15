@@ -8,6 +8,8 @@ from src.utils import operations_list
 
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 
+from src.reading_operations import reading_operations_csv, reading_operations_excel
+
 print(get_mask_card_number('7000792289606361'))
 
 print(get_mask_account('73654108430135874305'))
@@ -122,3 +124,7 @@ for card_number in card_number_generator(1, 5):
     print(card_number)
 
 operations_list(path='../data/operations.json')
+
+print(reading_operations_csv(transactions_csv = '../data/transactions.csv'))
+
+print(reading_operations_excel(transactions_excel='../data/transactions_excel.xls'))
