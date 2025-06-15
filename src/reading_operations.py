@@ -1,8 +1,10 @@
 import csv
 import pandas as pd
+from typing import Any
 
 
-def reading_operations_csv(transactions_csv):
+def reading_operations_csv(transactions_csv: str) -> Any:
+    """считывает финансовые операции из CSV выдает список словарей с транзакциями"""
     list_transactions_csv = []
     try:
         with open(transactions_csv) as trans_file:
@@ -12,27 +14,19 @@ def reading_operations_csv(transactions_csv):
             return list_transactions_csv
     except FileNotFoundError:
         return f"Ошибка: Файл по пути '{transactions_csv}' не найден."
-    except csv.Error as e:
-        return f"Ошибка при чтении CSV файла: {e}"
     except Exception as e:
         return f"Произошла ошибка: {e}"
 
 
-def reading_operations_excel(transactions_excel):
+def reading_operations_excel(transactions_excel: str) -> Any:
+    """считывает финансовые операции из Excel выдает список словарей с транзакциями"""
     try:
-        # Чтение Excel файла
         df = pd.read_excel(transactions_excel)
-
-        # Преобразование DataFrame в список словарей
-        transactions = df.to_dict(orient='records')
-
-        return transactions
+        list_transaction_excel = df.to_dict(orient='records')
+        return list_transaction_excel
     except FileNotFoundError:
         return f"Ошибка: Файл не найден по указанному пути: {transactions_excel}"
     except ValueError:
         return "Ошибка: Не удалось прочитать файл. Убедитесь, что это файл Excel."
     except Exception as e:
         return f"Произошла ошибка: {e}"
-
-
-
