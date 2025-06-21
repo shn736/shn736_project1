@@ -17,6 +17,7 @@ def reading_operations_csv(transactions_csv: str) -> Any:
     except Exception as e:
         return f"Произошла ошибка: {e}"
 
+#print(reading_operations_csv(transactions_csv = '../data/transactions.csv'))
 
 def reading_operations_excel(transactions_excel: str) -> Any:
     """считывает финансовые операции из Excel выдает список словарей с транзакциями"""
@@ -30,3 +31,5 @@ def reading_operations_excel(transactions_excel: str) -> Any:
         return "Ошибка: Не удалось прочитать файл. Убедитесь, что это файл Excel."
     except Exception as e:
         return f"Произошла ошибка: {e}"
+
+#print(reading_operations_excel(transactions_excel='../data/transactions_excel.xls'))

@@ -125,6 +125,6 @@ for card_number in card_number_generator(1, 5):
 
 operations_list(path='../data/operations.json')
 
-print(reading_operations_csv(transactions_csv = '../data/transactions.csv'))
+#print(reading_operations_csv(transactions_csv = '../data/transactions.csv'))
 
-print(reading_operations_excel(transactions_excel='../data/transactions_excel.xls'))
+#print(reading_operations_excel(transactions_excel='../data/transactions_excel.xls'))
