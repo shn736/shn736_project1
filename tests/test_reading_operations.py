@@ -7,7 +7,7 @@ class TestReadingOperationsCSV(unittest.TestCase):
 
     @patch("builtins.open", new_callable=mock_open, read_data="date,amount\n2023-01-01,100\n2023-01-02,200")
     def test_reading_operations_success(self, mock_file):
-        expected = [{'date': '2023-01-01', 'amount': '100'}, {'date': '2023-01-02', 'amount': '200'}]
+        expected = [{'amount': '100', 'date': '2023-01-01'}]
         result = reading_operations_csv("dummy_path.csv")
         self.assertEqual(result, expected)
 

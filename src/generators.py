@@ -4,8 +4,7 @@ from typing import Generator, Iterator, List, Dict
 def filter_by_currency(transactions: List[Dict], currency: str) -> Iterator[Dict]:
     """Функция для фильтрации транзакций по валюте"""
     for transaction in transactions:
-        if (transaction.get("currency_code") == currency
-                or transaction["operationAmount"]["currency"]["code"] == currency):
+        if transaction.get('currency_code') == currency or transaction["operationAmount"]["currency"]["code"] == currency:
             yield transaction
 
 
