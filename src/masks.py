@@ -4,7 +4,7 @@ import logging
 logging.basicConfig(encoding='utf-8')
 logger = logging.getLogger('masks')
 logger.setLevel(logging.DEBUG)
-file_handler = logging.FileHandler('logs/masks.log')
+file_handler = logging.FileHandler('C:/Users/shn-7/PycharmProjects/PythonProject1/logs/masks.log')
 file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)

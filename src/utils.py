@@ -6,7 +6,7 @@ import logging
 logging.basicConfig(encoding='utf-8')
 logger = logging.getLogger('utils')
 logger.setLevel(logging.DEBUG)
-file_handler = logging.FileHandler('logs/utils.log')
+file_handler = logging.FileHandler('C:/Users/shn-7/PycharmProjects/PythonProject1/logs/utils.log')
 file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
