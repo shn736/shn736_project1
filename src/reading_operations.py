@@ -8,11 +8,10 @@ def reading_operations_csv(transactions_csv, newline='', encoding='utf-8') -> An
     list_transactions_csv = []
     try:
         with open(transactions_csv) as trans_file:
-             reader = [{k: v for k, v in row.items()} for row in csv.DictReader(trans_file, skipinitialspace=True)]
-             return reader#csv.DictReader(trans_file)
-             # for row in reader:
-             #    list_transactions_csv.append(row)
-             #    return list_transactions_csv
+            reader = csv.DictReader(trans_file)
+            for row in reader:
+                list_transactions_csv.append(row)
+                return list_transactions_csv
     except FileNotFoundError:
         return f"Ошибка: Файл по пути '{transactions_csv}' не найден."
     except Exception as e:
